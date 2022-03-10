@@ -8,7 +8,7 @@ on:
 jobs:
   release_alpha:
     runs-on: ubuntu-latest
-    if: contains(fromJson('["shisama"]'), github.actor)
+    if: contains(fromJson('[]'), github.actor)
     permissions:
       packages: write
       contents: read
