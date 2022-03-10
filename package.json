@@ -1,0 +1,27 @@
+{
+  "name": "@shisama/release-alpha-test",
+  "version": "0.1.0",
+  "description": "This package is a test package, so this includes a meaningless code.",
+  "main": "dist/index.js",
+  "devDependencies": {
+    "standard-version": "^9.3.2",
+    "typescript": "^4.6.2",
+    "zx": "^5.2.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/@shisama"
+  },
+  "scripts": {
+    "build": "tsc",
+    "release:alpha": "zx ./scripts/release-alpha.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/shisama/release-alpha-test.git"
+  },
+  "author": "Masashi Hirano",
+  "license": "MIT"
+}

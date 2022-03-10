@@ -1,0 +1,27 @@
+name: 'release-alpha'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release_alpha:
+    runs-on: ubuntu-latest
+    if: contains(fromJson('["shisama"]'), github.actor)
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.11.0'
+          registry-url: https://npm.pkg.github.com/
+          scope: "@shisama"
+      - run: npm ci
+      - run: npm run build
+      - run: npm run release:alpha
+      - run: npm publish --tag next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
